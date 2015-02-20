@@ -1,0 +1,78 @@
+---
+title       : Build a Prediction model
+subtitle    : Predict the level of GAG in child's urine 
+author      : Baguinebie Bazongo
+job         : Statistician
+framework   : io2012        # {io2012, html5slides, shower, dzslides, ...}
+highlighter : highlight.js  # {highlight.js, prettify, highlight}
+hitheme     : tomorrow      # 
+widgets     : []            # {mathjax, quiz, bootstrap}
+mode        : selfcontained # {standalone, draft}
+knit        : slidify::knit2slides
+---
+
+## Background
+
+The accumulation of glycosaminoglycans (GAGs) can cause progressive damage to a broad range of tissues due to mucopolysaccharidoses (Thomas J. A, 2011). Quantitative analysis of urinary GAG can help to diagnose mucopolysaccharidoses and prevent it.
+The aim of this paper is to predict the level of GAG in child's urine
+
+
+--- .class #id 
+
+##  Material and method
+Data come from the MASS package of R. Data were collected on the concentration of a chemical GAG in the urine of 314 children aged from zero to seventeen years. The aim of the study was to produce a chart to help a pediatrican to assess if a child's GAG concentration is 'normal.
+We applied univariate and bivariate analysis to describe the two variables and used linear model to build prediction model. The dependent variable is the level of GAG and the predictor is child's age.
+Shiny interactive application was developed to help health professional to predict GAG level given child age.
+
+--- .class #id 
+
+##  Results and interpretation (1/2)
+A total of 314 children were included in the study. They ranged 0.0-17.7 years with mean of 5.3 and standard deviation of 5.0 years. The level of GAG ranged range 1.8-56.3 with mean of 13.2 and standard deviation of 9.0. The correlation coefficient of age and GAG is -0.7 and that of log(age) and GAG is -0.8, suggesting strong linear relationship between log (age) and GAG.
+
+The linear regression model explained 72% of the variance of GAG level and the coefficient of log(age) is significant (-4.5, pvalue<1%). The model is globally significant (F-statistic= 787.2, pvalue<1%). These results suggested that our model is good to predict GAG level.
+
+However, the model suffers from lack of predictor because other predictors could be missed. Unfortunately, we have only one predictor in the data base.
+
+
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.9625  4.1000  5.2820  8.2700 17.6700
+```
+
+```
+##    Min. 1st Qu.  Median    Mean 3rd Qu.    Max. 
+##  0.0000  0.9625  4.1000  5.2820  8.2700 17.6700
+```
+
+```
+## [1] -0.7052439
+```
+
+```
+## [1] -0.8462536
+```
+
+--- .class #id 
+
+##  Results and interpretation (2/2)
+
+```
+##                  Estimate Std. Error   t value      Pr(>|t|)
+## (Intercept)     16.978072  0.3028801  56.05543 6.034323e-165
+## log(Age + 0.02) -4.494668  0.1602020 -28.05626  2.567325e-87
+```
+
+```
+## [1] 0.7161452
+```
+
+```
+##    value    numdf    dendf 
+## 787.1535   1.0000 312.0000
+```
+
+You can access the application [here]( http://bazongo.shinyapps.io/myproject) to predict GAG by providing age.
+
+
+THANK YOU FOR YOUR ATTENTION
